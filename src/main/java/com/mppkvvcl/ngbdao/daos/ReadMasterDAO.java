@@ -4,6 +4,7 @@ import com.mppkvvcl.ngbdao.interfaces.ReadMasterInterface;
 import com.mppkvvcl.ngbdao.repositories.ReadMasterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,16 +26,10 @@ public class ReadMasterDAO {
         return readMasterRepository.findById(id);
     }
 
-    public List<ReadMasterInterface> getByConsumerNoAndBillMonthOrderByIdAsc(String consumerNo, String billMonth) {
-        if (consumerNo == null || billMonth == null) return null;
+    public List<ReadMasterInterface> getByConsumerNoAndBillMonthAndReplacementFlagAndUsedOnBill(String consumerNo, String billMonth, String replacementFlag, Boolean usedOnBill, Sort sort) {
+        if (consumerNo == null || billMonth == null || replacementFlag == null || sort == null) return null;
 
-        return readMasterRepository.findByConsumerNoAndBillMonthOrderByIdAsc(consumerNo, billMonth);
-    }
-
-    public List<ReadMasterInterface> getByConsumerNoAndBillMonthAndReplacementFlagAndUsedOnBillOrderByIdDesc(String consumerNo, String billMonth, String replacementFlag, Boolean usedOnBill) {
-        if (consumerNo == null || billMonth == null || replacementFlag == null) return null;
-
-        return readMasterRepository.findByConsumerNoAndBillMonthAndReplacementFlagAndUsedOnBillOrderByIdDesc(consumerNo, billMonth, replacementFlag, usedOnBill);
+        return readMasterRepository.findByConsumerNoAndBillMonthAndReplacementFlagAndUsedOnBill(consumerNo, billMonth, replacementFlag, usedOnBill, sort);
     }
 
     public List<ReadMasterInterface> getByConsumerNoAndReplacementFlagAndUsedOnBillAndBillMonthLessThanOrderByBillMonthDESC(String consumerNo, String replacementFlag, Boolean usedOnBill, String billMonth, Pageable pageable) {

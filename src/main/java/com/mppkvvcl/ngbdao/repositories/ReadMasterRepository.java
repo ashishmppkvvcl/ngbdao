@@ -4,6 +4,7 @@ import com.mppkvvcl.ngbdao.beans.ReadMaster;
 import com.mppkvvcl.ngbdao.interfaces.ReadMasterInterface;
 import org.jspecify.annotations.NonNull;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,9 +17,7 @@ public interface ReadMasterRepository extends JpaRepository<@NonNull ReadMaster,
 
     ReadMasterInterface findById(long id);
 
-    List<ReadMasterInterface> findByConsumerNoAndBillMonthOrderByIdAsc(String consumerNo, String billMonth);
-
-    List<ReadMasterInterface> findByConsumerNoAndBillMonthAndReplacementFlagAndUsedOnBillOrderByIdDesc(String consumerNo, String billMonth, String replacementFlag, Boolean usedOnBill);
+    List<ReadMasterInterface> findByConsumerNoAndBillMonthAndReplacementFlagAndUsedOnBill(String consumerNo, String billMonth, String replacementFlag, Boolean usedOnBill, Sort sort);
 
     @Query("from #{#entityName} rm where rm.consumerNo= :consumerNo and rm.replacementFlag= :replacementFlag and rm.usedOnBill= :usedOnBill and to_date(rm.billMonth,'MON-YYYY') < to_date(:billMonth,'MON-YYYY') order by to_date(rm.billMonth,'MON-YYYY') DESC, id DESC")
     public List<ReadMasterInterface> findByConsumerNoAndReplacementFlagAndUsedOnBillAndBillMonthLessThanOrderByBillMonthDESC(@Param("consumerNo") String consumerNo, @Param("replacementFlag") String replacementFlag, @Param("usedOnBill") boolean usedOnBill, @Param("billMonth") String billMonth, Pageable pageable);

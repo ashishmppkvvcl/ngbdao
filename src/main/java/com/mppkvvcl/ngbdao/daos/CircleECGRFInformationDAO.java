@@ -24,8 +24,9 @@ public class CircleECGRFInformationDAO {
         return circleECGRFInformationRepository.findById(id);
     }
 
-    public List<CircleECGRFInformationInterface> getByCircleIdOrderByIndexAsc(long circleId) {
+    public List<CircleECGRFInformationInterface> getByCircleIdAndMonthOrderByIndexAsc(long circleId, String billMonth) {
+        if (billMonth == null) return null;
 
-        return circleECGRFInformationRepository.findByCircleIdOrderByIndexAsc(circleId);
+        return circleECGRFInformationRepository.findByCircleIdAndMonthOrderByIndexAsc(circleId, billMonth);
     }
 }

@@ -3,7 +3,10 @@ package com.mppkvvcl.ngbdao.daos;
 import com.mppkvvcl.ngbdao.interfaces.ReadMasterGeneratorInterface;
 import com.mppkvvcl.ngbdao.repositories.ReadMasterGeneratorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ReadMasterGeneratorDAO {
@@ -20,5 +23,11 @@ public class ReadMasterGeneratorDAO {
     public ReadMasterGeneratorInterface getById(long id) {
 
         return readMasterGeneratorRepository.findById(id);
+    }
+
+    public List<ReadMasterGeneratorInterface> getByConsumerNoAndBillMonthAndReplacementFlagAndUsedOnBill(String consumerNo, String billMonth, String replacementFlag, boolean usedOnBill, Sort sort) {
+        if (consumerNo == null || billMonth == null || replacementFlag == null || sort == null) return null;
+
+        return readMasterGeneratorRepository.findByConsumerNoAndBillMonthAndReplacementFlagAndUsedOnBill(consumerNo, billMonth, replacementFlag, usedOnBill, sort);
     }
 }

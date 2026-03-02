@@ -1,39 +1,34 @@
 package com.mppkvvcl.ngbdao.beans;
 
-import com.mppkvvcl.ngbdao.interfaces.CircleECGRFInformationInterface;
+import com.mppkvvcl.ngbdao.interfaces.NetMeteringArrangementInterface;
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity(name = "CircleECGRFInformation")
-@Table(name = "circle_ecgrf_information")
-public class CircleECGRFInformation implements CircleECGRFInformationInterface {
+@Table(name = "net_meter_arrangement")
+@Entity(name = "NetMeterArrangement")
+public class NetMeteringArrangement implements NetMeteringArrangementInterface {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 
-    @Column(name = "circle_id")
-    private long circleId;
+    @Column(name = "group_id")
+    private long groupId;
 
-    @Column(name = "index")
-    private long index;
+    @Column(name = "group_type")
+    private String groupType;
 
-    @Column(name = "member_type")
-    private String memberType;
+    @Column(name = "consumer_no")
+    private String consumerNo;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "ratio")
+    private BigDecimal ratio;
 
-    @Column(name = "contact_no")
-    private String contactNo;
-
-    @Column(name = "case_handling")
-    private String caseHandling;
-
-    @Column(name = "remark")
-    private String remark;
+    @Column(name = "is_parent")
+    private boolean isParent;
 
     @Column(name = "start_bill_month")
     private String startBillMonth;
@@ -64,73 +59,53 @@ public class CircleECGRFInformation implements CircleECGRFInformationInterface {
     }
 
     @Override
-    public long getCircleId() {
-        return circleId;
+    public long getGroupId() {
+        return groupId;
     }
 
     @Override
-    public void setCircleId(long circleId) {
-        this.circleId = circleId;
+    public void setGroupId(long groupId) {
+        this.groupId = groupId;
     }
 
     @Override
-    public long getIndex() {
-        return index;
+    public String getGroupType() {
+        return groupType;
     }
 
     @Override
-    public void setIndex(long index) {
-        this.index = index;
+    public void setGroupType(String groupType) {
+        this.groupType = groupType;
     }
 
     @Override
-    public String getMemberType() {
-        return memberType;
+    public String getConsumerNo() {
+        return consumerNo;
     }
 
     @Override
-    public void setMemberType(String memberType) {
-        this.memberType = memberType;
+    public void setConsumerNo(String consumerNo) {
+        this.consumerNo = consumerNo;
     }
 
     @Override
-    public String getName() {
-        return name;
+    public BigDecimal getRatio() {
+        return ratio;
     }
 
     @Override
-    public void setName(String name) {
-        this.name = name;
+    public void setRatio(BigDecimal ratio) {
+        this.ratio = ratio;
     }
 
     @Override
-    public String getContactNo() {
-        return contactNo;
+    public boolean isParent() {
+        return isParent;
     }
 
     @Override
-    public void setContactNo(String contactNo) {
-        this.contactNo = contactNo;
-    }
-
-    @Override
-    public String getCaseHandling() {
-        return caseHandling;
-    }
-
-    @Override
-    public void setCaseHandling(String caseHandling) {
-        this.caseHandling = caseHandling;
-    }
-
-    @Override
-    public String getRemark() {
-        return remark;
-    }
-
-    @Override
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setParent(boolean parent) {
+        isParent = parent;
     }
 
     @Override
@@ -195,15 +170,13 @@ public class CircleECGRFInformation implements CircleECGRFInformationInterface {
 
     @Override
     public String toString() {
-        return "CircleECGRFInformation{" +
+        return "NetMeteringArrangement{" +
                 "id=" + id +
-                ", circleId=" + circleId +
-                ", index=" + index +
-                ", memberType='" + memberType + '\'' +
-                ", name='" + name + '\'' +
-                ", contactNo='" + contactNo + '\'' +
-                ", caseHandling='" + caseHandling + '\'' +
-                ", remark='" + remark + '\'' +
+                ", groupId=" + groupId +
+                ", groupType='" + groupType + '\'' +
+                ", consumerNo='" + consumerNo + '\'' +
+                ", ratio=" + ratio +
+                ", isParent=" + isParent +
                 ", startBillMonth='" + startBillMonth + '\'' +
                 ", endBillMonth='" + endBillMonth + '\'' +
                 ", createdBy='" + createdBy + '\'' +

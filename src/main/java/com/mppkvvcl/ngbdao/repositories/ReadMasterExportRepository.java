@@ -14,5 +14,9 @@ public interface ReadMasterExportRepository extends JpaRepository<@NonNull ReadM
 
     ReadMasterExportInterface findById(long id);
 
+    List<ReadMasterExportInterface> findByConsumerNoAndReplacementFlagAndUsedOnBill(String consumerNo, String replacementFlag, boolean usedOnBill, Sort sort);
+
     List<ReadMasterExportInterface> findByConsumerNoAndBillMonthAndReplacementFlagAndUsedOnBill(String consumerNo, String billMonth, String replacementFlag, boolean usedOnBill, Sort sort);
+
+    List<ReadMasterExportInterface> findByConsumerNoAndBillMonthAndMeterIdentifier(String consumerNo, String billMonth, String meterIdentifier, Sort sort);
 }
