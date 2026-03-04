@@ -15,6 +15,6 @@ public interface ConsumerMeterMappingRepository extends JpaRepository<@NonNull C
 
     ConsumerMeterMappingInterface findById(long id);
 
-    @Query("from #{#entityName} where consumerNo= :consumerNo and (installationBillMonth= :billMonth or removal_bill_month= :billMonth) order by installationDate desc, id desc")
+    @Query("from #{#entityName} where consumerNo= :consumerNo and (installationBillMonth= :billMonth or removalBillMonth= :billMonth) order by installationDate desc, id desc")
     List<ConsumerMeterMappingInterface> findByConsumerNoAndBillMonthOrderByInstallationDateDescIdDesc(@Param("consumerNo") String consumerNo, @Param("billMonth") String billMonth);
 }

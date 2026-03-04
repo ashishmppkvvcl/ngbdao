@@ -14,5 +14,5 @@ public interface ReadMasterGeneratorRepository extends JpaRepository<@NonNull Re
 
     ReadMasterGeneratorInterface findById(long id);
 
-    List<ReadMasterGeneratorInterface> findByConsumerNoAndBillMonthAndReplacementFlagAndUsedOnBill(String consumerNo, String billMonth, String replacementFlag, boolean usedOnBill, Sort sort);
+    List<ReadMasterGeneratorInterface> findByConsumerNoAndBillMonthAndReplacementFlag(String consumerNo, String billMonth, String replacementFlag, Sort sort);
 }

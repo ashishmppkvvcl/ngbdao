@@ -1,6 +1,6 @@
 package com.mppkvvcl.ngbdao.repositories;
 
-import com.mppkvvcl.ngbdao.daos.SecurityDeposit;
+import com.mppkvvcl.ngbdao.beans.SecurityDeposit;
 import com.mppkvvcl.ngbdao.interfaces.SecurityDepositInterface;
 import org.jspecify.annotations.NonNull;
 import org.springframework.data.jpa.repository.JpaRepository;

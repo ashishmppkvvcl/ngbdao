@@ -25,9 +25,9 @@ public class ReadMasterGeneratorDAO {
         return readMasterGeneratorRepository.findById(id);
     }
 
-    public List<ReadMasterGeneratorInterface> getByConsumerNoAndBillMonthAndReplacementFlagAndUsedOnBill(String consumerNo, String billMonth, String replacementFlag, boolean usedOnBill, Sort sort) {
+    public List<ReadMasterGeneratorInterface> getByConsumerNoAndBillMonthAndReplacementFlag(String consumerNo, String billMonth, String replacementFlag, Sort sort) {
         if (consumerNo == null || billMonth == null || replacementFlag == null || sort == null) return null;
 
-        return readMasterGeneratorRepository.findByConsumerNoAndBillMonthAndReplacementFlagAndUsedOnBill(consumerNo, billMonth, replacementFlag, usedOnBill, sort);
+        return readMasterGeneratorRepository.findByConsumerNoAndBillMonthAndReplacementFlag(consumerNo, billMonth, replacementFlag, sort);
     }
 }

@@ -1,4 +1,4 @@
-package com.mppkvvcl.ngbdao.daos;
+package com.mppkvvcl.ngbdao.beans;
 
 import com.mppkvvcl.ngbdao.interfaces.SecurityDepositInterface;
 import jakarta.persistence.*;
