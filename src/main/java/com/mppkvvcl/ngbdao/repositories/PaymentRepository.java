@@ -19,6 +19,6 @@ public interface PaymentRepository extends JpaRepository<@NonNull Payment, @NonN
     @Query("from #{#entityName} p where p.consumerNo= :consumerNo and p.deleted= :deleted and to_date(p.postingBillMonth,'MON-YYYY') <= to_date(:postingBillMonth,'MON-YYYY') order by payDate DESC, id DESC")
     List<PaymentInterface> findByConsumerNoAndDeletedAndPostingBillMonthLessThanEqualOrderByPayDateDESC(@Param("consumerNo") String consumerNo, @Param("deleted") boolean deleted, @Param("postingBillMonth") String postingBillMonth, Pageable pageable);
 
-    @Query("from #{#entityName} p where p.consumerNo= :consumerNo and postingBillMonth= :postingBillMonth and p.posted= :posted and p.deleted= :deleted")
+    @Query("select sum(p.amount) from #{#entityName} p where p.consumerNo= :consumerNo and postingBillMonth= :postingBillMonth and p.posted= :posted and p.deleted= :deleted")
     Long findAmountByConsumerNoAndPostingBillMonthAndPostedDeleted(@Param("consumerNo") String consumerNo, @Param("postingBillMonth") String postingBillMonth, @Param("posted") boolean posted, @Param("deleted") boolean deleted);
 }
