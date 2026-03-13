@@ -14,4 +14,8 @@ public interface BillCalculationLineRepository extends JpaRepository<@NonNull Bi
     BillCalculationLineInterface findById(long id);
 
     List<BillCalculationLineInterface> findByBillId(long billId);
+
+    List<BillCalculationLineInterface> findByBillIdAndHead(long billId, String head);
+
+    List<BillCalculationLineInterface> findByBillIdAndHeadIn(long billId, List<String> heads);
 }

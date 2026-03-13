@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public interface BillCalculationLineInterface extends Serializable {
-
+    String HEAD_ENERGY_CHARGE = "energy_charge";
+    String HEAD_FIXED_CHARGE = "fixed_charge";
 
     long getId();
 

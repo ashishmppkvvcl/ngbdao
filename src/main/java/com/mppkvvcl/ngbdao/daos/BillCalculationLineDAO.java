@@ -28,4 +28,16 @@ public class BillCalculationLineDAO {
 
         return billCalculationLineRepository.findByBillId(billId);
     }
+
+    public List<BillCalculationLineInterface> getByBillIdAndHead(long billId, String head) {
+        if (head == null) return null;
+
+        return billCalculationLineRepository.findByBillIdAndHead(billId, head);
+    }
+
+    public List<BillCalculationLineInterface> getByBillIdAndHeadIn(long billId, List<String> heads) {
+        if (heads == null || heads.isEmpty()) return null;
+
+        return billCalculationLineRepository.findByBillIdAndHeadIn(billId, heads);
+    }
 }
